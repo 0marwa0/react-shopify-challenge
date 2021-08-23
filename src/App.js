@@ -1,14 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import {useContext, useEffect } from 'react';
+import {useContext, useEffect ,useState} from 'react';
 import {MoviesStore} from "./store"
 import axios  from 'axios';
 
+
 function App() {
   const { state, dispatch } = useContext(MoviesStore);
+  const [searchItem,setSearchIte]=useState("batman")
 const GetMovies=()=>{
     let res;
-     axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=81949653`)
+     axios.get(`https://www.omdbapi.com/?apikey=81949653&s=${searchItem}`)
   .then(response => {
  console.log(response); 
  dispatch({type:"GET_Movies",payload:response.data}) 
