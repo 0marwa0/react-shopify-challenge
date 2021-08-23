@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import MoveisProvider from "./store"
 ReactDOM.render(
   <React.StrictMode>
+    <MoveisProvider>
     <App />
+    </MoveisProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
