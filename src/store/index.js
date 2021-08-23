@@ -18,4 +18,16 @@ export function reducer(state, action) {
   }
 }
 
+function MoveisProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <MoviesStore.Provider value={{ state, dispatch }}>
+      {children}
+    </MoviesStore.Provider>
+  );
+}
+export default MoveisProvider;
+
+
 
