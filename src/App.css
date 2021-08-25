@@ -7,11 +7,19 @@
   pointer-events: none;
 }
 .MoviesList {
-  width: 100%;
+  /* width: 100%; */
+  margin-left: 110px;
   flex-wrap: wrap;
   display: flex;
-  height: 2000px;
+  height: 1400px;
 }
+.InputHolder {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .input {
   padding: 5px 5px;
   border: none;

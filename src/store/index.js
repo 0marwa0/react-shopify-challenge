@@ -1,12 +1,16 @@
 import React, { useReducer } from "react";
-const initialState = [];
+
+const initialState = { movies: [], nominations: [] };
+
 export const MoviesStore = React.createContext(initialState);
 export function reducer(state, action) {
   switch (action.type) {
     case "GET_Movies":
-      return action.payload;
-    case action.type:
-      return state.filter((item) => item.id !== action.payload);
+      return { ...state, movies: action.payload };
+    case "Post_Nominations":
+      return { ...state, nominations: [...state.nominations, action.payload] };
+    case "Delete_Nomination":
+      return { ...state, nominations: action.payload };
     default:
       return state;
   }

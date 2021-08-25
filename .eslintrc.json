@@ -18,6 +18,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
+    // "comma-dangle": ["off", "always"],
     "no-unused-vars": "warn",
     "func-names": "off",
     "object-shorthand": "off",

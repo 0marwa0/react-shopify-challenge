@@ -1,28 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { MoviesStore } from "./store";
 import "./App.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import NavBar from "./components/NavBar";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { SideBar } from "./components/SideBar";
+import SideBar from "./components/SideBar";
 import SearchList from "./components/SearchList";
+import { GetMovies } from "./store/Api";
 function App() {
   const { state, dispatch } = useContext(MoviesStore);
   const [searchItem, setSearchIte] = useState("batman");
-  const GetMovies = () => {
-    let res;
-    axios
-      .get(`https://www.omdbapi.com/?apikey=81949653&s=${searchItem}`)
-      .then((response) => {
-        dispatch({ type: "GET_Movies", payload: response.data.Search });
-      })
-      .catch(() => {});
-    return res;
-  };
+
   useEffect(() => {
-    GetMovies();
+    GetMovies(searchItem, dispatch);
   }, []);
-  console.log(state, "data");
+
+  const onSearch = () => {
+    GetMovies(searchItem, dispatch);
+  };
+
+  const onAdd = (newItem) => {
+    const isNew = state.nominations.filter((item, i) => item === newItem);
+    if (isNew.length === 0) {
+      dispatch({ type: "Post_Nominations", payload: newItem });
+    }
+  };
+
+  const onDelete = (id) => {
+    let updatedState = state.nominations.filter(
+      (item, i) => item.imdbID !== id
+    );
+    dispatch({ type: "Delete_Nomination", payload: updatedState });
+  };
+
   return (
     <div className="App">
       <Grid
@@ -31,18 +40,19 @@ function App() {
         templateColumns="repeat(5, 1fr)"
         gap={4}
       >
-        <GridItem rowSpan={3} colSpan={1} bg="#1e1b26">
+        <GridItem rowSpan={1} colSpan={1} bg="white">
           <SideBar
-            items={state}
+            items={state.nominations}
             searchItem={searchItem}
             setSearchItem={setSearchIte}
+            onDelete={onDelete}
+            onSearch={onSearch}
           />
         </GridItem>
-        <GridItem colSpan={2} bg="papayawhip" />
-        <GridItem colSpan={2} bg="papayawhip" />
-        <GridItem colSpan={4} bg="#e3def1">
+
+        <GridItem colSpan={4}>
           <div className="MoviesList">
-            <SearchList movies={state} />
+            <SearchList movies={state.movies} onAdd={onAdd} />
           </div>
         </GridItem>
       </Grid>
