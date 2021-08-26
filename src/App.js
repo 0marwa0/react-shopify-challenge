@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MoviesStore } from "./store";
 import "./App.css";
-
+import SideBar from "./shared/SideBar";
 import { GetMovies } from "./store/Api";
 function App() {
   const { state, dispatch } = useContext(MoviesStore);
@@ -29,7 +29,11 @@ function App() {
     dispatch({ type: "Delete_Nomination", payload: updatedState });
   };
 
-  return <div className="App">let start it</div>;
+  return (
+    <div className="App">
+      <SideBar />
+    </div>
+  );
 }
 
 export default App;
