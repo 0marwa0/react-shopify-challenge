@@ -18,6 +18,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
+    "linebreak-style": ["warn", "unix"],
     // "comma-dangle": ["off", "always"],
     "no-unused-vars": "warn",
     "func-names": "off",

@@ -1,0 +1,33 @@
+.NominationsList {
+  display: flex;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  height: 320px;
+  gap: 20px;
+  background-color: #f8e10f50;
+  flex-direction: column;
+}
+.NominationItem {
+  display: flex;
+  border-radius: 10px;
+  padding: 8px;
+  gap: 20px;
+  background-color: white;
+  align-items: center;
+  flex-direction: row;
+}
+.NominationItem img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+.NominationItem .text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 250px;
+  height: 1.2em;
+  color: rgb(90, 88, 88);
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
