@@ -7,7 +7,7 @@ function NominationItem({ item, onDelete }) {
     <div className="NominationItem">
       <img src={Poster} />
       <div className="text">{Title}</div>
-      <IoClose color="red" onClick={() => onDelete(imdbID)} />
+      <IoClose color="red" size={35} onClick={() => onDelete(imdbID)} />
     </div>
   );
 }

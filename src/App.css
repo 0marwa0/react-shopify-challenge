@@ -1,4 +1,25 @@
 :root {
   --primary_color: #e1d77c;
-  --secondary_color: #14efd5;
+  --secondary_color: #08a896;
+}
+.SideContent {
+  width: 35%;
+}
+.ListCount {
+  padding: 5px 10px;
+  width: 30px;
+  margin: 0 5px;
+  font-size: 20px;
+  color: var(--primary_color);
+  /* background-color: var(--secondary_color); */
+}
+.MainLayout {
+  display: flex;
+  flex-direction: row;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
 }
